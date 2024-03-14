@@ -13,8 +13,7 @@ function closePopupByOverlay(evt) {
     }
 }
 
-
-//Функция открытия попапа
+//функция открытия попапа
 export function openModal(item) {
     item.classList.toggle('popup_is-opened');
 
