@@ -14,7 +14,7 @@ function closePopupByOverlay(evt) {
 }
 
 
-//функция открытия попапа
+//Функция открытия попапа
 export function openModal(item) {
     item.classList.toggle('popup_is-opened');
 
@@ -30,7 +30,7 @@ export function openModal(item) {
     document.addEventListener('click', closePopupByOverlay)
 }
 
-//функция закрытия попапа
+//Функция закрытия попапа
 export function closeModal(item) {
     item.classList.remove('popup_is-opened');
 
