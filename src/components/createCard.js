@@ -1,5 +1,5 @@
 //функция создания карточки
-export function createCard(item, deliteFunc, cardTemplate, likeCard, openImage) {
+export function createCard(item, deliteCard, cardTemplate, likeCard, openImage) {
     const cardElement = cardTemplate.querySelector('.places__item').cloneNode(true);
 
     cardElement.querySelector('.card__image').src = item.link;
@@ -7,7 +7,7 @@ export function createCard(item, deliteFunc, cardTemplate, likeCard, openImage) 
     cardElement.querySelector('.card__title').textContent = item.name;
 
     const deliteButton = cardElement.querySelector('.card__delete-button');
-    deliteButton.addEventListener('click', deliteFunc);
+    deliteButton.addEventListener('click', deliteCard);
 
     const likeCardButton = cardElement.querySelector('.card__like-button');
     likeCardButton.addEventListener('click', likeCard);
