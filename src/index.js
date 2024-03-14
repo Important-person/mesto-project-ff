@@ -11,11 +11,8 @@ const content = document.querySelector('.places__list');
 
 //для открытия, закрытия и заполнения модального окна с персональной информацией
 const formProfile = document.querySelector('.popup_type_edit');
-const formElement = document.querySelector('.popup__form');
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_description');
-nameInput.value = "Жак-Ив Кусто";
-jobInput.value = "Исследователь океана";
 
 const openProfileButton = document.querySelector('.profile__edit-button');
 const closeProfileButton = formProfile.querySelector('.popup__close');
@@ -47,18 +44,17 @@ openProfileButton.addEventListener('click', () => openModal(formProfile));
 closeProfileButton.addEventListener('click', () => closeModal(formProfile));
 
 //функция заполнения формы персональных данных
-export function handleFormSubmit(evt) {
+export function fillingFormProfile(evt) {
     evt.preventDefault();
 
     document.querySelector('.profile__title').textContent = nameInput.value;
     document.querySelector('.profile__description').textContent = jobInput.value;
 
     closeModal(formProfile);
-    formElement.reset()
 };
 
 //заполнение формы персональных данных 
-formElement.addEventListener('submit', handleFormSubmit);
+formProfile.addEventListener('submit', fillingFormProfile);
 
 //вызов функции открытие попапа добавления карточки
 openCardButton.addEventListener('click', () => openModal(formCard));
@@ -73,7 +69,7 @@ function addFormCreateCard(evt) {
     const titleInput = document.querySelector('.popup__input_type_card-name').value;
     const linkInput = document.querySelector('.popup__input_type_url').value;
 
-    let src =  {
+    const src =  {
         name: titleInput,
         link: linkInput
     };
@@ -97,7 +93,7 @@ function openImage(evt) {
     imagePopup.src = srcImage;
 
     captionPopup.textContent = altImage;
-    popupOpen.classList.toggle('popup_is-opened');
+    openModal(popupOpen);
 
     document.addEventListener('keydown', (evt) => {
         if (evt.key === 'Escape') {
