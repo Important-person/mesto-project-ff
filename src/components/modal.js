@@ -17,13 +17,6 @@ function closePopupByOverlay(evt) {
 export function openModal(item) {
     item.classList.toggle('popup_is-opened');
 
-    if (item.classList.contains('popup_type_edit')) {
-        const nameProfile = document.querySelector('.profile__title').textContent;
-        const descriptionProfile = document.querySelector('.profile__description').textContent;
-        item.querySelector('.popup__input_type_name').value = nameProfile;
-        item.querySelector('.popup__input_type_description').value = descriptionProfile;
-    };
-
     document.addEventListener('keydown', closePopupByEsc);
 
     document.addEventListener('click', closePopupByOverlay)

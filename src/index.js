@@ -37,7 +37,14 @@ initialCards.forEach( function (item) {
 });
 
 //вызов цункции открытия попапа с персональными данными
-openProfileButton.addEventListener('click', () => openModal(formProfile));
+openProfileButton.addEventListener('click', () => {
+    const nameProfile = document.querySelector('.profile__title').textContent;
+    const descriptionProfile = document.querySelector('.profile__description').textContent;
+    nameInput.value = nameProfile;
+    jobInput.value = descriptionProfile;
+
+    openModal(formProfile)
+});
 
 //вызов функции закрытие попапа персональных данных
 //закрытие через крестик
@@ -93,19 +100,7 @@ function openImage(evt) {
     imagePopup.src = srcImage;
 
     captionPopup.textContent = altImage;
-    openModal(popupOpen);
-
-    document.addEventListener('keydown', (evt) => {
-        if (evt.key === 'Escape') {
-            closeModal(popupOpen)
-        }
-    });
-
-    document.addEventListener('click', (evt) => {
-        if (evt.target.classList.contains('popup_is-opened')) {
-            closeModal(popupOpen)
-        }
-    });
+    openModal(popupOpen)
 };
 
 //закрытие попапа image
