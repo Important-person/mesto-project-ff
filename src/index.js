@@ -11,6 +11,7 @@ const content = document.querySelector('.places__list');
 
 //для открытия, закрытия и заполнения модального окна со сменой аватарки
 const formAvatar = document.querySelector('.popup_type_new-avatar');
+const formAvatarTemplate = formAvatar.querySelector('.popup__form');
 
 const openAvatarButton = document.querySelector('.profile__image');
 const closeAvatarButton = formAvatar.querySelector('.popup__close');
@@ -78,7 +79,8 @@ closeAvatarButton.addEventListener('click', () => closeModal(formAvatar));
 //вызов функции открытие попапа замены автарки
 openAvatarButton.addEventListener('click', () => {
     openModal(formAvatar);
-    clearValidation(formProfile, validationConfig);
+    formAvatarTemplate.reset();
+    clearValidation(formAvatar, validationConfig);
 });
 
 //функция замены аватарки
@@ -145,6 +147,7 @@ formProfile.addEventListener('submit', fillingFormProfile);
 //вызов функции открытие попапа добавления карточки
 openCardButton.addEventListener('click', () => {
     openModal(formCard);
+    formCardTemplate.reset();
     clearValidation(formCard, validationConfig)
 });
 
@@ -165,7 +168,6 @@ function addFormCreateCard(evt) {
     };
 
     closeModal(formCard);
-    formCardTemplate.reset();
     //отправка карточки на сервер
     return (postInitialCard(src))
 };
