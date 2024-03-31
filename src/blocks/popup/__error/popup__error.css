@@ -1,0 +1,13 @@
+.popup__input-error {
+    display: none;
+    position: absolute;
+    max-width: 358px;
+    color: rgba(255, 0, 0, 1);
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.popup__error_visible {
+    display: block;
+}
+
