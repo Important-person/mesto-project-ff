@@ -1,3 +1,8 @@
+//функция проверки 
+function checkResponse(res) {
+    return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
+ }
+
 //загрузка карточек с сервера
 export const getInitialCards = () => {
     return fetch('https://nomoreparties.co/v1/wff-cohort-10/cards', {
@@ -5,13 +10,7 @@ export const getInitialCards = () => {
         authorization: '890c8242-590d-450e-b7b0-73fd2e81f605'
     }
     })
-    .then(res => {
-        if(!res.ok) {
-            return Promise.reject(`Ошибка: ${res.status}`)
-        } else {
-            return res.json()
-        }
-    });
+    .then(res => checkResponse(res))
 };
 
 //загрузка информации о пользователе с сервера
@@ -21,13 +20,7 @@ export const getUserInformation = () => {
         authorization: '890c8242-590d-450e-b7b0-73fd2e81f605'
     }
     })
-    .then(res => {
-        if(!res.ok) {
-            return Promise.reject(`Ошибка: ${res.status}`)
-        } else {
-            return res.json()
-        }
-    });
+    .then(res => checkResponse(res))
 };
 
 //отправка новой автарки на сервер
@@ -42,13 +35,7 @@ export const patchAvatar = (url) => {
             avatar: url
         })
     })
-    .then(res => {
-        if(!res.ok) {
-            return Promise.reject(`Ошибка: ${res.status}`)
-        } else {
-            return res.json()
-        }
-    });
+    .then(res => checkResponse(res))
 };
 
 //отправка данных о пользователе на сервер
@@ -64,13 +51,7 @@ export const patchUserInformation = (name, job) => {
             about: job
         })
     })
-    .then(res => {
-        if(!res.ok) {
-            return Promise.reject(`Ошибка: ${res.status}`)
-        } else {
-            return res.json()
-        }
-    });
+    .then(res => checkResponse(res))
 };
 
 //отправка карточки на сервер 
@@ -83,13 +64,7 @@ export const postInitialCard = (body) => {
         },
         body: JSON.stringify(body)
     })
-    .then(res => {
-        if (!res.ok) {
-            return Promise.reject(`Ошибка: ${res.status}`);
-        } else {
-            return res.json();
-        }
-    });
+    .then(res => checkResponse(res))
 };
 
 //удаление созданной карточки карточки 
@@ -100,13 +75,7 @@ export const deleteCardApi = (idCard) => {
             authorization: '890c8242-590d-450e-b7b0-73fd2e81f605'
         }
     })
-    .then(res => {
-        if (!res.ok) {
-            return Promise.reject(`Ошибка: ${res.status}`);
-        } else {
-            return res.json();
-        }
-    });
+    .then(res => checkResponse(res))
 };
 
 //если лайкнул карточку
@@ -118,13 +87,7 @@ export const putLIkeCard = (idCard) => {
             'Content-Type': 'application/json'
         }
     })
-    .then(res => {
-        if (!res.ok) {
-            return Promise.reject(`Ошибка: ${res.status}`);
-        } else {
-            return res.json();
-        }
-    });
+    .then(res => checkResponse(res))
 };
 
 //если отменил лайк карточки
@@ -135,11 +98,5 @@ export const deleteLIkeCard = (idCard) => {
             authorization: '890c8242-590d-450e-b7b0-73fd2e81f605',
         }
     })
-    .then(res => {
-        if (!res.ok) {
-            return Promise.reject(`Ошибка: ${res.status}`);
-        } else {
-            return res.json();
-        }
-    });
-};
+    .then(res => checkResponse(res))
+}
